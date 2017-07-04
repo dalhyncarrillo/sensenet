@@ -129,21 +129,23 @@ namespace SenseNet.Portal.Virtualization
             var request = GetRequest(sender);
             bool anonymAuthenticated;
 
+            //// Cross-Origin Resource Sharing (CORS)
+            //if (!HttpHeaderTools.TrySetAllowedOriginHeader())
+            //    AuthenticationHelper.ThrowForbidden("token auth");
+
+            //if (request?.HttpMethod == "OPTIONS")
+            //{
+            //    // set allowed methods and headers
+            //    HttpHeaderTools.SetPreflightResponse();
+
+            //    application?.CompleteRequest();
+            //    return;
+            //}
+
             var basicAuthenticated = DispatchBasicAuthentication(context, out anonymAuthenticated);
 
             if (IsTokenAuthenticationRequested(request))
             {
-                // Cross-Origin Resource Sharing (CORS)
-                if (!HttpHeaderTools.IsOriginHeaderAllowed())
-                    AuthenticationHelper.ThrowForbidden("token auth");
-
-                if (request?.HttpMethod == "OPTIONS")
-                {
-                    // set allowed methods and headers
-                    HttpHeaderTools.SetPreflightResponse();
-
-                    application?.CompleteRequest();
-                }
 
                 if (basicAuthenticated && anonymAuthenticated)
                 {
