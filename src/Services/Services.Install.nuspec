@@ -16,7 +16,7 @@
     <tags>sensenet ecm ecms</tags>
     <dependencies>
       <dependency id="SenseNet.Services" version="7.0.0-beta2.1" />
-      <dependency id="SenseNet.SnAdmin" version="1.4.2" />
+      <dependency id="SenseNet.SnAdmin" version="1.4.3" />
     </dependencies>
   </metadata>
   <files>
